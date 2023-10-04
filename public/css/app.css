@@ -1,0 +1,9 @@
+svg {
+    width: 1rem !important;
+    height: 1rem !important;
+    fill: currentColor !important;
+}
+
+.pagination p{
+    margin-top: 20px;
+}
