@@ -23,33 +23,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary close-modal" data-dismiss="orderModal">Close</button>
-                <button type="button" class="btn btn-primary">Order</button>
+                <button type="button" class="btn btn-primary" id="orderSubmit">Order</button>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-    $('.close-modal').click(function() {
-        // Закрываем модальное окно после успешной обработки заказа
-        $('#orderModal').modal('hide');
-    });
-</script>
-
-<script>
-    $(document).ready(function () {
-        // Обработка нажатия кнопки "Order"
-        $('.order-btn').on('click', function () {
-            let bookId = $(this).data('book-id');
-            let bookTitle = $(this).data('book-title'); // Получаем название книги
-
-            let modalLabel = $('#orderModalLabel');
-
-            // Изменяем текст заголовка модального окна
-            modalLabel.text('Order Book: ' + bookTitle);
-
-            // Открываем модальное окно
-            $('#orderModal').modal('show');
-        });
-    });
-</script>
+<script src="{{ asset('storage/js/modal.js') }}"></script>

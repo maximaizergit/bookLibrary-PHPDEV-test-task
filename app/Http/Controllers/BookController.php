@@ -12,8 +12,10 @@ class BookController extends Controller
         $itemsPerPage = $request->input('itemsPerPage', 10);
         $books = Book::with('author')->paginate($itemsPerPage);
         if ($request->ajax()) {
-            return view('books.partial', compact('books')); // Создайте частичное представление для списка авторов
+
+            return view('books.partial', compact('books'));
         }
+
         return view('books', compact('books'));
     }
 }

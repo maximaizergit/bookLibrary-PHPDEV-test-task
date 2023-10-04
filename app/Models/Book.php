@@ -14,9 +14,9 @@ class Book extends Model
     {
         return $this->belongsTo(Author::class);
     }
-
-    public function orders()
+    public static function findBookById($id)
     {
-        return $this->hasMany(Order::class);
+        return static::where('id', $id)->first();
     }
+
 }

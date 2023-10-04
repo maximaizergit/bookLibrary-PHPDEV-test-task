@@ -2,6 +2,7 @@
 <ul class="list-group">
     @foreach($authors as $author)
         <li class="list-group-item">
+            <img src="{{ asset('storage/' . $author->photo) }}" class="card-img-top" alt="{{ $author->first_name }} " style="max-height: 300px; max-width: 400px">
             <h2>{{ $author->first_name }} {{ $author->last_name }}</h2>
             @if ($author->books->count() > 0)
                 <ul>

@@ -23,5 +23,15 @@ Route::get('authors/{author}/books', 'App\Http\Controllers\AuthorController@book
 
 Route::get('/books', 'App\Http\Controllers\BookController@index')->name('books.index');
 
+Route::get('/add-book', 'App\Http\Controllers\AddBookController@index')->name('add-book.index');
+
+Route::post('/add-book', 'App\Http\Controllers\AddBookController@store')->name('add-book.index');
+
+Route::get('/add-author', 'App\Http\Controllers\AddAuthorController@index')->name('add-author.index');
+
+Route::post('/add-author', 'App\Http\Controllers\AddAuthorController@store')->name('add-author.index');
+
+Route::post('/submit-order', 'App\Http\Controllers\OrderController@submitOrder')->name('submit.order');
+
 
 

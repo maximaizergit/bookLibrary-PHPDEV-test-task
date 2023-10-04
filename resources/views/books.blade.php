@@ -12,9 +12,9 @@
             <h1>List of Books</h1>
             <div class="row">
                 @foreach($books as $book)
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="{{ $book->image }}" class="card-img-top" alt="{{ $book->title }}">
+                    <div class="col-md-4" style="height: 500px; width: 400px">
+                        <div class="card" style="height: 100%">
+                            <img src="{{ asset('storage/' . $book->image) }}" class="card-img-top" alt="{{ $book->title }} " style="max-height: 300px">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $book->title }}</h5>
                                 <p class="card-text">Author: {{ $book->author->first_name }} {{ $book->author->last_name }}</p>
@@ -30,42 +30,9 @@
             </div>
         </div>
 </div>
+<input type="hidden" id="booksUrl" data-url='{{ route('books.index') }}'>
 <script>
-    $(document).ready(function() {
-        // Обработчик изменения количества записей
-        $('#items-per-page').change(function() {
-            let selectedValue = $(this).val();
 
-            // Выполняем AJAX-запрос на сервер для получения новых данных
-            $.ajax({
-                url: '{{ route('books.index') }}', // Замените на свой маршрут
-                type: 'GET',
-                data: { itemsPerPage: selectedValue },
-                success: function(response) {
-                    // Обновляем контент на странице
-                    $('#books-list').html(response);
-                    console.log($('#books-list'));
-                }
-            });
-        });
-
-        // Обновляем ссылки на другие страницы при их нажатии
-        $(document).on('click', '.pagination a', function(e) {
-            e.preventDefault();
-            let page = $(this).attr('href').split('page=')[1];
-            let itemsPerPage = $('#items-per-page').val();
-
-            $.ajax({
-                url: '{{ route('books.index') }}', // Замените на свой маршрут
-                type: 'GET',
-                data: { page: page, itemsPerPage: itemsPerPage },
-                success: function(response) {
-                    $('#books-list').html(response);
-                    console.log($('#books-list'));
-                }
-            });
-        });
-    });
 </script>
     @endsection
 

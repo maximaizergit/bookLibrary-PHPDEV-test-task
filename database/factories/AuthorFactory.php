@@ -16,7 +16,7 @@ class AuthorFactory extends Factory
         return [
             'first_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
-            'photo' => 'path/to/author/photo.jpg', // Замените на реальный путь к фото автора
+            'photo' =>  'uploads/temp_img.jpg',
         ];
     }
 

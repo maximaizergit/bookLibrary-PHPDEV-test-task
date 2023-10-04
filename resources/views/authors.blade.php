@@ -12,6 +12,7 @@
         <ul class="list-group">
             @foreach($authors as $author)
                 <li class="list-group-item">
+                    <img src="{{ asset('storage/' . $author->photo) }}" class="card-img-top" alt="{{ $author->first_name }} " style="max-height: 300px;max-width: 400px">
                     <h2>{{ $author->first_name }} {{ $author->last_name }}</h2>
                     @if ($author->books->count() > 0)
                         <ul>
@@ -30,48 +31,7 @@
         <div class="pagination justify-content-center mt-5 mb-5 text-center">
             {{ $authors->links() }}
         </div>
-
     </div>
-    <script>
-        $(document).ready(function() {
-            // Обработчик изменения количества записей
-            $('#items-per-page').change(function() {
-                let selectedValue = $(this).val();
-
-                // Выполняем AJAX-запрос на сервер для получения новых данных
-                $.ajax({
-                    url: '{{ route('authors.index') }}', // Замените на свой маршрут
-                    type: 'GET',
-                    data: { itemsPerPage: selectedValue },
-                    success: function(response) {
-                        // Обновляем контент на странице
-                        $('#authors-list').html(response);
-                        console.log($('#authors-list'));
-                    }
-                });
-            });
-
-            // Обновляем ссылки на другие страницы при их нажатии
-            $(document).on('click', '.pagination a', function(e) {
-                e.preventDefault();
-                let page = $(this).attr('href').split('page=')[1];
-                let itemsPerPage = $('#items-per-page').val();
-
-                $.ajax({
-                    url: '{{ route('authors.index') }}', // Замените на свой маршрут
-                    type: 'GET',
-                    data: { page: page, itemsPerPage: itemsPerPage },
-                    success: function(response) {
-                        $('#authors-list').html(response);
-                        console.log($('#authors-list'));
-                    }
-                });
-            });
-        });
-    </script>
-
-
-
-
-
+    <input type="hidden" id="authorUrl" data-url='{{ route('authors.index') }}'>
+    <script src="{{ asset('storage/js/author.js') }}"></script>
 @endsection

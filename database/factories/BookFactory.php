@@ -20,8 +20,8 @@ class BookFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence,
-            'author_id' => \App\Models\Author::factory()->create()->id, // Используем фабрику для создания связанного автора
-            'image' => 'path/to/book/image.jpg', // Замените на реальный путь к обложке книги
+            'author_id' => \App\Models\Author::factory()->create()->id,
+            'image' => 'uploads/temp_img.jpg',
         ];
     }
 }
